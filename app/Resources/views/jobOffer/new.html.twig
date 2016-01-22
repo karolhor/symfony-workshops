@@ -7,51 +7,64 @@
         <div class="panel panel-default">
             <div class="panel-heading"></div>
             <div class="panel-body">
-                <form class="form-horizontal" method="post">
-                    <div class="form-group">
-                        <label for="title" class="col-sm-2 control-label">Title</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="title" name="form[title]" placeholder="PHP Programmer">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="employer" class="col-sm-2 control-label">Employer</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="employer" name="form[employer]" placeholder="e.g. Google Inc.">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="jobDescription" class="col-sm-2 control-label">Description</label>
-                        <div class="col-sm-10">
-                            <textarea id="jobDescription" class="form-control" name="form[description]" rows="20" placeholder="Requirements, Social Package, Salary"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="jobType" class="col-sm-2 control-label">Job type</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="jobType" name="form[type]" placeholder="e.g. PHP">
-                        </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="attachment" class="col-sm-2 control-label">Attachment</label>
-                        <div class="col-sm-10">
-                            <input type="file" id="attachment" name="form[attachment] class="form-control">
-                        </div>
+                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_errors(form) }}
+
+                <div class="form-group">
+                    {{ form_label(form.title, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.title, {'attr':
+                            {'class': 'form-control', 'placeholder': 'PHP Programmer'}}) }}
                     </div>
-                    <div class="form-group">
-                        <label for="attachmentName" class="col-sm-2 control-label">Attachment Name</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name="form[attachmentName]" id="attachmentName" placeholder="e.g. Resume">
-                        </div>
+                    {{ form_errors(form.title) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.employer, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.employer, {'attr':
+                            {'class': 'form-control', 'placeholder': 'e.g. Google Inc.'}}) }}
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-success">Submit</button>
-                            <a href="{{ path("listJobs") }}" class="btn btn-link">Go back to list</a>
-                        </div>
+                    {{ form_errors(form.employer) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.description, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.description, {'attr':
+                            {'class': 'form-control', 'rows': '20', 'placeholder': 'Requirements, Social Package, Salary'}}) }}
                     </div>
-                </form>
+                    {{ form_errors(form.description) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.type, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.type, {'attr':
+                            {'class': 'form-control', 'placeholder': 'e.g. PHP'}}) }}
+                    </div>
+                    {{ form_errors(form.type) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.attachment, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.attachment, {'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    {{ form_errors(form.attachment) }}
+                </div>
+                <div class="form-group">
+                    {{ form_label(form.attachmentName, null, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.attachmentName, {'attr':
+                            {'class': 'form-control', 'placeholder': 'e.g. Resume'}}) }}
+                    </div>
+                    {{ form_errors(form.attachmentName) }}
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-success'}}) }}
+                        <a href="{{ path("listJobs") }}" class="btn btn-link">Go back to list</a>
+                    </div>
+                </div>
+                {{ form_end(form) }}
             </div>
         </div>
     </div>

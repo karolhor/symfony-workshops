@@ -3,10 +3,10 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Job;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,12 +29,13 @@ class JobOfferController extends Controller
         $job = new Job();
 
         $form = $this->createFormBuilder($job)
-            ->add('title', TextType::class)
-            ->add('employer', TextType::class)
+            ->add('title')
+            ->add('employer')
             ->add('description', TextareaType::class)
-            ->add('type', TextType::class)
+            ->add('type', TextType::class, ['label'=> 'Job type'])
             ->add('attachment', FileType::class)
-            ->add('attachmentName', TextType::class)
+            ->add('attachmentName')
+            ->add('submit', SubmitType::class)
             ->getForm();
 
         $form->handleRequest($request);
