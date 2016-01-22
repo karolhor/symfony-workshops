@@ -2,24 +2,17 @@
 
 {% block content %}
 
-    {{ dump(job) }}
     <div class="container job-offer">
-        <h1>PHP Programmer @ <span class="employer-label">Amazon</span></h1>
+        <h1>{{ job.title }} @ <span class="employer-label">{{ job.employer }}</span></h1>
 
-        <h3>Job Description <span class="label label-primary">PHP</span></h3>
+        <h3>Job Description <span class="label label-primary">{{ job.type }}</span></h3>
 
         <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto aspernatur eligendi error, est et, ex, modi molestias nostrum officia placeat provident reiciendis rem temporibus vel veniam veritatis voluptate. Officia?
-        </p>
-        <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto aspernatur eligendi error, est et, ex, modi molestias nostrum officia placeat provident reiciendis rem temporibus vel veniam veritatis voluptate. Officia?
-        </p>
-        <p class="lead">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto aspernatur eligendi error, est et, ex, modi molestias nostrum officia placeat provident reiciendis rem temporibus vel veniam veritatis voluptate. Officia?
+            {{ job.description }}
         </p>
 
         <h3>Attachment</h3>
-        <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> Amazon Job Offer</a>
+        <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> {{ job.attachmentName }}r</a>
 
         <div class="row actions">
             <a href="" class="btn btn-primary">Edit</a>
