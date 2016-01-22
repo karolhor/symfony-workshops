@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container job-offer">
+        <h1>PHP Programmer @ <span class="employer-label">Amazon</span></h1>
+
+        <h3>Job Description <span class="label label-primary">PHP</span></h3>
+
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto aspernatur eligendi error, est et, ex, modi molestias nostrum officia placeat provident reiciendis rem temporibus vel veniam veritatis voluptate. Officia?
+        </p>
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto aspernatur eligendi error, est et, ex, modi molestias nostrum officia placeat provident reiciendis rem temporibus vel veniam veritatis voluptate. Officia?
+        </p>
+        <p class="lead">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus architecto aspernatur eligendi error, est et, ex, modi molestias nostrum officia placeat provident reiciendis rem temporibus vel veniam veritatis voluptate. Officia?
+        </p>
+
+        <h3>Attachment</h3>
+        <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> Amazon Job Offer</a>
+
+        <div class="row actions">
+            <a href="" class="btn btn-primary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+            <a href="{{ path("listJobs") }}" class="btn btn-link">Go back to list</a>
+        </div>
+    </div>
+{% endblock %}

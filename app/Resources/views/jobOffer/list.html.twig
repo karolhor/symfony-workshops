@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container job-list">
+        <h1>Current job offers</h1>
+
+        <div class="new-job-btn">
+            <a href="{{ path("newJob") }}" class="btn btn-primary">Add new Job Offer</a>
+        </div>
+
+        <div class="panel panel-default">
+            <nav class="navbar navbar-default job-filters">
+                <div class="container-fluid">
+                    <form class="navbar-form">
+                        <div class="form-group col-sm-4">
+                            <label for="titleFilter">Title</label>
+                            <input type="text" class="form-control" id="titleFilter">
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="employerFilter">Employer</label>
+                            <input type="text" class="form-control" id="employerFilter">
+                        </div>
+                        <div class="form-group col-sm-3">
+                            <label for="jobTypeFilter">Job type</label>
+                            <input type="text" class="form-control" id="jobTypeFilter">
+                        </div>
+                        <div class="col-sm-1">
+                            <button type="submit" class="btn btn-success">Filter</button>
+                        </div>
+                    </form>
+                </div>
+            </nav>
+
+            <div class="panel-body">
+
+                <div class="list-group">
+                    <a href="{{ path("showJob") }}" class="list-group-item">
+                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Amazon</span></h4>
+                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
+                        <span class="label label-primary">PHP</span>
+                    </a>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Google Inc.</span></h4>
+                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
+                        <span class="label label-primary">QA</span>
+                    </a>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading job-header">Senior Java Developer @ <span class="employer-label">Allegro</span></h4>
+                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
+                        <span class="label label-primary">Java</span>
+                    </a>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Amazon</span></h4>
+                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
+                        <span class="label label-primary">DevOps</span>
+                    </a>
+                </div>
+                <div class="list-group">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Amazon</span></h4>
+                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
+                        <span class="label label-primary">PHP</span>
+                    </a>
+                </div>
+
+                <nav>
+                    <ul class="pagination">
+                        <li><span aria-hidden="true">&laquo;</span></li>
+                        <li class="active"><a href="#">1</a></li>
+                        <li class=""><a href="#">2</a></li>
+                        <li class=""><a href="#">3</a></li>
+                        <li><a href="#"><span>&raquo;</span></a></li>
+                    </ul>
+                </nav>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
