@@ -55,7 +55,7 @@ class JobOfferController extends Controller
      */
     public function showAction()
     {
-        return $this->render('jobOffer/show.html.twig', [
+        return $this->render('jobOffer/showFromList.html.twig', [
             'job' => new Job()
         ]);
     }
