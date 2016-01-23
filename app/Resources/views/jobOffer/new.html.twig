@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form 'Form/job_offer_layout.html.twig' %}
+
 {% block content %}
     <div class="container new-job">
         <h1>Create new Job offer</h1>
@@ -8,54 +10,20 @@
             <div class="panel-heading"></div>
             <div class="panel-body">
 
-                {{ form_start(form, {'attr': {'novalidate': 'novalidate', 'class': 'form-horizontal'}}) }}
+                {{ form_start(form) }}
                 {{ form_errors(form) }}
 
-                <div class="form-group">
-                    {{ form_label(form.title) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.title) }}
-                    </div>
-                    {{ form_errors(form.title) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.employer) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.employer) }}
-                    </div>
-                    {{ form_errors(form.employer) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.description) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.description) }}
-                    </div>
-                    {{ form_errors(form.description) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.type) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.type) }}
-                    </div>
-                    {{ form_errors(form.type) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.attachment) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.attachment) }}
-                    </div>
-                    {{ form_errors(form.attachment) }}
-                </div>
-                <div class="form-group">
-                    {{ form_label(form.attachmentName) }}
-                    <div class="col-sm-10">
-                        {{ form_widget(form.attachmentName) }}
-                    </div>
-                    {{ form_errors(form.attachmentName) }}
-                </div>
+                {{ form_row(form.title, {'attr': {'placeholder': 'PHP Programmer'}}) }}
+                {{ form_row(form.employer, {'attr': {'placeholder': 'e.g. Google Inc.'}}) }}
+                {{ form_row(form.description, {'attr':
+                    {'placeholder': 'Requirements, Social Package, Salary', 'rows': '20'}}) }}
+                {{ form_row(form.type, {'label': 'Job Type', 'attr': {'placeholder': 'e.g. PHP'}}) }}
+                {{ form_row(form.attachment) }}
+                {{ form_row(form.attachmentName, {'attr': {'placeholder': 'e.g. Resume'}}) }}
+
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
-                        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-success'}}) }}
+                        {{ form_widget(form.submit) }}
                         <a href="{{ path("listJobs") }}" class="btn btn-link">Go back to list</a>
                     </div>
                 </div>

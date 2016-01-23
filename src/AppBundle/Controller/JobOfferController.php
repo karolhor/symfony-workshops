@@ -8,7 +8,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 class JobOfferController extends Controller
@@ -29,25 +28,12 @@ class JobOfferController extends Controller
         $job = new Job();
 
         $form = $this->createFormBuilder($job)
-            ->add('title', TextType::class, [
-                'label_attr' => ['class' => 'col-sm-2 control-label'],
-                'attr' => ['class' => 'form-control', 'placeholder' => 'PHP Programmer']])
-            ->add('employer', TextType::class, [
-                'label_attr' => ['class' => 'col-sm-2 control-label'],
-                'attr' => ['class' => 'form-control', 'placeholder' => 'e.g. Google Inc.']])
-            ->add('description', TextareaType::class, [
-                'label_attr' => ['class' => 'col-sm-2 control-label'],
-                'attr' => ['class' => 'form-control', 'placeholder' => 'Requirements, Social Package, Salary', 'rows' => '20']])
-            ->add('type', TextType::class, [
-                'label'=> 'Job type',
-                'label_attr' => ['class' => 'col-sm-2 control-label'],
-                'attr' => ['class' => 'form-control', 'placeholder' => 'e.g. PHP']])
-            ->add('attachment', FileType::class, [
-                'label_attr' => ['class' => 'col-sm-2 control-label'],
-                'attr' => ['class' => 'form-control']])
-            ->add('attachmentName', TextType::class, [
-                'label_attr' => ['class' => 'col-sm-2 control-label'],
-                'attr' => ['class' => 'form-control', 'placeholder' => 'e.g. Resume']])
+            ->add('title')
+            ->add('employer')
+            ->add('description', TextareaType::class)
+            ->add('type')
+            ->add('attachment', FileType::class)
+            ->add('attachmentName')
             ->add('submit', SubmitType::class)
             ->getForm();
 
