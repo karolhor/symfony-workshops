@@ -14,10 +14,18 @@
         <h3>Attachment</h3>
         <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> {{ job.attachmentName }}</a>
 
+        <h3>Tags</h3>
+        <ul>
+            {% for tag in job.tags %}
+                <li><span class="label label-info">{{ tag.value }}</span></li>
+            {% endfor %}
+        </ul>
+
         <div class="row actions">
             <a href="" class="btn btn-primary">Edit</a>
             <a href="" class="btn btn-danger">Delete</a>
             <a href="{{ path("listJobs") }}" class="btn btn-link">Go back to list</a>
         </div>
+
     </div>
 {% endblock %}

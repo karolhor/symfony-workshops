@@ -24,6 +24,9 @@ class Job
     /** @var  string */
     private $attachmentName;
 
+    /** @var  Tag[] */
+    private $tags = [];
+
     /**
      * @return string
      */
@@ -118,5 +121,21 @@ class Job
     public function setAttachmentName($attachmentName)
     {
         $this->attachmentName = $attachmentName;
+    }
+
+    /**
+     * @param Tag[] $tags
+     */
+    public function setTags($tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * @return Tag[]
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

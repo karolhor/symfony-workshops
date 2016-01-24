@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 use AppBundle\Entity\Job;
+use AppBundle\Form\DataTransformer\TagsArrayDataTransformer;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -22,7 +23,12 @@ class JobType extends AbstractType
             ->add('description', TextareaType::class)
             ->add('type')
             ->add('attachment', FileType::class)
-            ->add('attachmentName');
+            ->add('attachmentName')
+            ->add('tags');
+
+        $builder
+            ->get('tags')
+            ->addModelTransformer(new TagsArrayDataTransformer());
     }
 
     public function configureOptions(OptionsResolver $resolver)
