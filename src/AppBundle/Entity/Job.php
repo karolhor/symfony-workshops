@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,8 +56,23 @@ class Job
     /** @var  string */
     private $attachmentName;
 
-    /** @var  Tag[] */
-    private $tags = [];
+
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\JoinTable(name="job_tags",
+     *     joinColumns={@ORM\JoinColumn(name="job_id", referencedColumnName="id")},
+     *     inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")})
+     * )
+     *
+     * @var  Tag[] | ArrayCollection
+     */
+    private $tags;
+
+    public function __construct()
+    {
+        $this->tags = new ArrayCollection();
+    }
 
     /**
      * @return string
@@ -155,15 +171,7 @@ class Job
     }
 
     /**
-     * @param Tag[] $tags
-     */
-    public function setTags($tags)
-    {
-        $this->tags = $tags;
-    }
-
-    /**
-     * @return Tag[]
+     * @return Tag[]|ArrayCollection
      */
     public function getTags()
     {
