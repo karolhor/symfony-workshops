@@ -5,8 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Job;
 use AppBundle\Form\JobType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class JobOfferController extends Controller
 {
@@ -30,14 +32,11 @@ class JobOfferController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-
             $em = $this->getDoctrine()->getManager();
             $em->persist($job);
             $em->flush();
 
-            return $this->render('jobOffer/show.html.twig', [
-                'job' => $job
-            ]);
+            return $this->redirectToRoute('showJob', ['id' => $job->getId()]);
         }
 
         return $this->render('jobOffer/new.html.twig', [
@@ -46,12 +45,16 @@ class JobOfferController extends Controller
     }
 
     /**
-     * @Route("/job/show/1", name="showJob")
+     * @param Job $job
+     * @return Response
+     *
+     * @Route("/job/show/{id}", name="showJob")
+     * @ParamConverter("job", class="AppBundle\Entity\Job")
      */
-    public function showAction()
+    public function showAction(Job $job)
     {
-        return $this->render('jobOffer/showFromList.html.twig', [
-            'job' => new Job()
+        return $this->render('jobOffer/show.html.twig', [
+            'job' => $job
         ]);
     }
 }
