@@ -2,21 +2,52 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Class Job
+ *
+ * @ORM\Entity
+ * @ORM\Table("jobs")
  */
 class Job
 {
-    /** @var  string */
+    /**
+     * @ORM\Column(type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @var int
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=false)
+     *
+     * @var  string
+     */
     private $title;
 
-    /** @var  string */
+
+    /**
+     * @ORM\Column(type="string", length=200, nullable=false)
+     *
+     * @var  string
+     */
     private $employer;
 
-    /** @var string */
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     *
+     * @var string
+     */
     private $description;
 
-    /** @var  string */
+    /**
+     * @ORM\Column(type="string", length=100, nullable=false)
+     *
+     * @var  string
+     */
     private $type;
 
     private $attachment;
@@ -137,5 +168,13 @@ class Job
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
