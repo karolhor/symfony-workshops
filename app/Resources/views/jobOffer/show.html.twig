@@ -5,7 +5,7 @@
     <div class="container job-offer">
         <h1>{{ job.title }} @ <span class="employer-label">{{ job.employer }}</span></h1>
 
-        <h3>Job Description <span class="label label-primary">{{ job.type }}</span></h3>
+        <h3>Job Description <span class="label label-primary">{{ job.type.name }}</span></h3>
 
         <p class="lead">
             {{ job.description }}

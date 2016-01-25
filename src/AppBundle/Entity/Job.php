@@ -44,9 +44,9 @@ class Job
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=100, nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\JobType", inversedBy="jobs")
      *
-     * @var  string
+     * @var  JobType
      */
     private $type;
 
@@ -107,7 +107,7 @@ class Job
     }
 
     /**
-     * @return string
+     * @return JobType
      */
     public function getType()
     {
@@ -115,7 +115,7 @@ class Job
     }
 
     /**
-     * @param string $type
+     * @param JobType $type
      */
     public function setType($type)
     {
