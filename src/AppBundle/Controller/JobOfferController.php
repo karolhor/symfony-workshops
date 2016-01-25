@@ -30,6 +30,11 @@ class JobOfferController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($job);
+            $em->flush();
+
             return $this->render('jobOffer/show.html.twig', [
                 'job' => $job
             ]);
