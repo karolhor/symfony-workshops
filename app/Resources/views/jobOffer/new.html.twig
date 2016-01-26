@@ -18,8 +18,8 @@
                 {{ form_row(form.description, {'attr':
                     {'placeholder': 'Requirements, Social Package, Salary', 'rows': '20'}}) }}
                 {{ form_row(form.type, {'label': 'Job Type', 'attr': {'placeholder': 'e.g. PHP'}}) }}
-                {{ form_row(form.attachment) }}
-                {{ form_row(form.attachmentName, {'attr': {'placeholder': 'e.g. Resume'}}) }}
+                {{ form_row(form.attachment.file) }}
+                {{ form_row(form.attachment.name, {'attr': {'placeholder': 'e.g. Resume'}}) }}
                 {{ form_row(form.tags, {'attr': {'placeholder': 'full-time, Scrum, Multisport'}}) }}
 
                 <div class="form-group">

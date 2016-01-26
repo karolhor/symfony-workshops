@@ -50,10 +50,12 @@ class Job
      */
     private $type;
 
+    /**
+     * @var Attachment
+     *
+     * @ORM\OneToOne(targetEntity="Attachment")
+     */
     private $attachment;
-
-    /** @var  string */
-    private $attachmentName;
 
     /** @var  Tag[] */
     private $tags = [];
@@ -123,7 +125,7 @@ class Job
     }
 
     /**
-     * @return mixed
+     * @return Attachment
      */
     public function getAttachment()
     {
@@ -131,27 +133,11 @@ class Job
     }
 
     /**
-     * @param mixed $attachment
+     * @param Attachment $attachment
      */
-    public function setAttachment($attachment)
+    public function setAttachment(Attachment $attachment)
     {
         $this->attachment = $attachment;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAttachmentName()
-    {
-        return $this->attachmentName;
-    }
-
-    /**
-     * @param string $attachmentName
-     */
-    public function setAttachmentName($attachmentName)
-    {
-        $this->attachmentName = $attachmentName;
     }
 
     /**
