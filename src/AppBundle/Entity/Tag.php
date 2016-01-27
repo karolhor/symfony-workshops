@@ -2,11 +2,30 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * Class Tag
+ *
+ * @ORM\Table(name="tags")
+ * @ORM\Entity()
  */
 class Tag
 {
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=30, nullable=false)
+     */
     private $value;
 
     /**
@@ -31,5 +50,13 @@ class Tag
     public function __toString()
     {
         return $this->value;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 }
