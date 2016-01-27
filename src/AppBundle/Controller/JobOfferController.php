@@ -31,7 +31,7 @@ class JobOfferController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             if (null === $job->getAttachment()->getFile()) {
                 $job->setAttachment(null);
             } else {

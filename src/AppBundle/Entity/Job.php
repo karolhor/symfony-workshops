@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Job
@@ -26,6 +27,9 @@ class Job
      * @ORM\Column(type="string", length=200, nullable=false)
      *
      * @var  string
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(max=200)
      */
     private $title;
 
@@ -34,6 +38,9 @@ class Job
      * @ORM\Column(type="string", length=200, nullable=false)
      *
      * @var  string
+     *
+     * @Assert\NotBlank
+     * @Assert\Length(max=200)
      */
     private $employer;
 
@@ -41,6 +48,8 @@ class Job
      * @ORM\Column(type="text", nullable=false)
      *
      * @var string
+     *
+     * @Assert\NotBlank
      */
     private $description;
 
