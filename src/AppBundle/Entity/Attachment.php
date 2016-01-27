@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 /**
  * Class Attachment
@@ -135,5 +136,19 @@ class Attachment
     public function setOriginalFileName($originalFileName)
     {
         $this->originalFileName = $originalFileName;
+    }
+
+    /**
+     * @param ExecutionContextInterface $context
+     *
+     * @Assert\Callback
+     */
+    public function validateName(ExecutionContextInterface $context)
+    {
+        if($this->file && trim($this->name) == "") {
+            $context->buildViolation("Attachment name should not be empty if file was sent.")
+                ->atPath('name')
+                ->addViolation();
+        }
     }
 }
