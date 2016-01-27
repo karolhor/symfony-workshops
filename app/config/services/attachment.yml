@@ -1,0 +1,5 @@
+services:
+  attachment.attachment_upload_manager:
+    class: AppBundle\Attachment\AttachmentUploadManager
+    arguments:
+      - "%kernel.root_dir%/../web/uploads/attachments"

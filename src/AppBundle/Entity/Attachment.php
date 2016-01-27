@@ -33,6 +33,13 @@ class Attachment
     /**
      * @var string
      *
+     * @ORM\Column(type="string")
+     */
+    private $originalFileName;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=100, nullable=false)
      */
     private $name;
@@ -112,5 +119,21 @@ class Attachment
     public function setFile($file)
     {
         $this->file = $file;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOriginalFileName()
+    {
+        return $this->originalFileName;
+    }
+
+    /**
+     * @param string $originalFileName
+     */
+    public function setOriginalFileName($originalFileName)
+    {
+        $this->originalFileName = $originalFileName;
     }
 }

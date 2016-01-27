@@ -16,3 +16,6 @@
 /web/bundles/
 
 auth.json
+
+/web/uploads/attachments/*
+!/web/uploads/attachments/.gitkeep

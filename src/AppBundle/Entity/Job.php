@@ -53,7 +53,7 @@ class Job
     /**
      * @var Attachment
      *
-     * @ORM\OneToOne(targetEntity="Attachment")
+     * @ORM\OneToOne(targetEntity="Attachment", cascade={"persist"})
      */
     private $attachment;
 
