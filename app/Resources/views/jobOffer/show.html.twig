@@ -11,8 +11,10 @@
             {{ job.description }}
         </p>
 
-        <h3>Attachment</h3>
-        <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> {{ job.attachment.name }}</a>
+        {% if job.attachment %}
+            <h3>Attachment</h3>
+            <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> {{ job.attachment.name }}</a>
+        {% endif %}
 
         <h3>Tags</h3>
         <ul>

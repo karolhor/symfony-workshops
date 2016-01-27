@@ -3,6 +3,8 @@
 namespace AppBundle\Form\DataTransformer;
 
 use AppBundle\Entity\Tag;
+use AppBundle\Repository\TagsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\DataTransformerInterface;
 
 /**
@@ -10,6 +12,16 @@ use Symfony\Component\Form\DataTransformerInterface;
  */
 class TagsArrayDataTransformer implements DataTransformerInterface
 {
+    /** @var  TagsRepository */
+    private $tagsRepository;
+
+    /**
+     * @param TagsRepository $tagsRepository
+     */
+    public function __construct(TagsRepository $tagsRepository)
+    {
+        $this->tagsRepository = $tagsRepository;
+    }
 
     /**
      * Transforms array of Tags to a string: "tag1, tag2, tag3"
@@ -20,6 +32,10 @@ class TagsArrayDataTransformer implements DataTransformerInterface
      */
     public function transform($tagsArray)
     {
+        if ($tagsArray instanceof ArrayCollection) {
+            $tagsArray = $tagsArray->toArray();
+        }
+
         if (!is_array($tagsArray)) {
             return "";
         }
@@ -42,12 +58,14 @@ class TagsArrayDataTransformer implements DataTransformerInterface
 
         $tags = [];
         foreach ($tagNamesArray as $tagName) {
-            $tag = new Tag();
-            $tag->setValue(trim($tagName));
-
-            $tags[] = $tag;
+            $tags[] = trim($tagName);
         }
 
-        return $tags;
+        $this->tagsRepository->batchInsert($tags);
+
+        $values =  $this->tagsRepository
+            ->findByMultipleValues($tags);
+
+        return $values;
     }
 }

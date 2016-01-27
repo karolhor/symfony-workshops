@@ -6,8 +6,11 @@ use AppBundle\Entity\JobType as JobTypeEntity;
 use AppBundle\Entity\Job;
 use AppBundle\Form\DataTransformer\TagsArrayDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,6 +19,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class JobType extends AbstractType
 {
+    /** @var  TagsArrayDataTransformer */
+    private $tagsDataTransformer;
+
+    /**
+     * @param TagsArrayDataTransformer $tagsDataTransformer
+     */
+    public function __construct(TagsArrayDataTransformer $tagsDataTransformer)
+    {
+        $this->tagsDataTransformer = $tagsDataTransformer;
+    }
+
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -27,11 +42,11 @@ class JobType extends AbstractType
                 'choice_label' => 'name'
             ])
             ->add('attachment', AttachmentType::class)
-            ->add('tags');
+            ->add('tags', TextType::class);
 
         $builder
             ->get('tags')
-            ->addModelTransformer(new TagsArrayDataTransformer());
+            ->addModelTransformer($this->tagsDataTransformer);
     }
 
     public function configureOptions(OptionsResolver $resolver)

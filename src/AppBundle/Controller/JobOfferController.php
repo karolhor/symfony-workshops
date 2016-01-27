@@ -32,8 +32,12 @@ class JobOfferController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
-            $this->get('attachment.attachment_upload_manager')
-                ->upload($job->getAttachment());
+            if (null === $job->getAttachment()->getFile()) {
+                $job->setAttachment(null);
+            } else {
+                $this->get('attachment.attachment_upload_manager')
+                    ->upload($job->getAttachment());
+            }
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($job);

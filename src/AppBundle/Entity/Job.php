@@ -147,11 +147,22 @@ class Job
     }
 
     /**
-     * @param Attachment $attachment
+     * @param Attachment|null $attachment
      */
-    public function setAttachment(Attachment $attachment)
+    public function setAttachment($attachment)
     {
         $this->attachment = $attachment;
+    }
+
+    /**
+     * @param Tag[]|ArrayCollection $tags
+     */
+    public function setTags($tags)
+    {
+        if (!$tags instanceof ArrayCollection) {
+            $tags = new ArrayCollection($tags);
+        }
+        $this->tags = $tags;
     }
 
     /**

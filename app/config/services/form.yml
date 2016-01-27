@@ -1,0 +1,12 @@
+services:
+  form.data_transformer.tags:
+    class: AppBundle\Form\DataTransformer\TagsArrayDataTransformer
+    arguments:
+      - "@repository.tags"
+
+  form.type.job:
+    class: AppBundle\Form\JobType
+    arguments:
+      - "@form.data_transformer.tags"
+    tags:
+      - {name: form.type}
