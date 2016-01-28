@@ -1,0 +1,7 @@
+services:
+  app.twig.attachment_extension:
+    class: AppBundle\Twig\AttachmentExtension
+    arguments:
+      - "@assets.packages"
+    tags:
+      - { name: twig.extension }

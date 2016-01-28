@@ -42,5 +42,6 @@ class AttachmentUploadManager
 
         $attachment->setFilename($newFileNameWithExtension);
         $attachment->setOriginalFileName($file->getClientOriginalName());
+        $attachment->setMimeType($file->getClientMimeType());
     }
 }

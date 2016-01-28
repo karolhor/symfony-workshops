@@ -13,7 +13,7 @@
 
         {% if job.attachment %}
             <h3>Attachment</h3>
-            <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> {{ job.attachment.name }}</a>
+            {{ job.attachment|attachment }}
         {% endif %}
 
         {% if job.tags|length > 0 %}

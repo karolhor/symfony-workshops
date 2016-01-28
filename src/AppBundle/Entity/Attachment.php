@@ -46,6 +46,13 @@ class Attachment
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string")
+     */
+    private $mimeType;
+
+    /**
      * @var UploadedFile
      */
     private $file;
