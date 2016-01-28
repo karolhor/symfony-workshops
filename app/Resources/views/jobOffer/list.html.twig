@@ -33,41 +33,19 @@
 
             <div class="panel-body">
 
-                <div class="list-group">
-                    <a href="{{ path("showJob", {'id': 1}) }}" class="list-group-item">
-                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Amazon</span></h4>
-                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
-                        <span class="label label-primary">PHP</span>
-                    </a>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Google Inc.</span></h4>
-                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
-                        <span class="label label-primary">QA</span>
-                    </a>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading job-header">Senior Java Developer @ <span class="employer-label">Allegro</span></h4>
-                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
-                        <span class="label label-primary">Java</span>
-                    </a>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Amazon</span></h4>
-                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
-                        <span class="label label-primary">DevOps</span>
-                    </a>
-                </div>
-                <div class="list-group">
-                    <a href="#" class="list-group-item">
-                        <h4 class="list-group-item-heading job-header">PHP Programmer @ <span class="employer-label">Amazon</span></h4>
-                        <p class="list-group-item-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem consequatur delectus dolore enim maiores modi molestiae mollitia nulla quas quisquam ratione velit, veniam voluptatibus! Asperiores iste minima neque quasi rem.</p>
-                        <span class="label label-primary">PHP</span>
-                    </a>
-                </div>
+                {% for job in jobs %}
+                    <div class="list-group">
+                        <a href="{{ path("showJob", {'id': job.id}) }}" class="list-group-item">
+                            <h4 class="list-group-item-heading job-header">{{ job.title }} @ <span class="employer-label">{{ job.employer }}</span></h4>
+                            <p class="list-group-item-text">{{ job.description|split("\n")|first }}</p>
+                            <span class="label label-primary">{{ job.type }}</span>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="list-group">
+                        No jobs found.
+                    </div>
+                {% endfor %}
 
                 <nav>
                     <ul class="pagination">

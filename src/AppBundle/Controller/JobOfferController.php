@@ -17,7 +17,10 @@ class JobOfferController extends Controller
      */
     public function listAction()
     {
-        return $this->render('jobOffer/list.html.twig');
+        $jobs = $this->getDoctrine()->getRepository('AppBundle:Job')
+            ->findAll();
+
+        return $this->render('jobOffer/list.html.twig', ['jobs' => $jobs]);
     }
 
     /**

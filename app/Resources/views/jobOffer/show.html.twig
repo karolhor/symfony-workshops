@@ -8,7 +8,7 @@
         <h3>Job Description <span class="label label-primary">{{ job.type.name }}</span></h3>
 
         <p class="lead">
-            {{ job.description }}
+            {{ job.description|nl2br }}
         </p>
 
         {% if job.attachment %}
@@ -16,12 +16,14 @@
             <a href="" class="attachment"><img src="{{ asset("images/pdf_48.png") }}" /> {{ job.attachment.name }}</a>
         {% endif %}
 
-        <h3>Tags</h3>
-        <ul>
-            {% for tag in job.tags %}
-                <li><span class="label label-info">{{ tag.value }}</span></li>
-            {% endfor %}
-        </ul>
+        {% if job.tags|length > 0 %}
+            <h3>Tags</h3>
+            <ul>
+                {% for tag in job.tags %}
+                    <li><span class="label label-info">{{ tag.value }}</span></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 
         <div class="row actions">
             <a href="" class="btn btn-primary">Edit</a>
