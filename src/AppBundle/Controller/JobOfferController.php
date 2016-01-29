@@ -67,4 +67,20 @@ class JobOfferController extends Controller
             'job' => $job
         ]);
     }
+
+    /**
+     * @Route(
+     *     "/test/{_locale}/{year}/{title}.{_format}",
+     *     defaults={"_format": "html"},
+     *     requirements={
+     *         "_locale": "en|pl",
+     *         "_format": "html|rss",
+     *         "year": "\d+"
+     *     }
+     * )
+     */
+    public function testAction($year, $_locale, $title, $_format)
+    {
+        return $this->render('base.html.twig');
+    }
 }
