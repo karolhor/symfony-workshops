@@ -32,7 +32,7 @@
             </nav>
 
             <div class="panel-body">
-                {{ "jobs.description"|trans }}
+                {% trans %} jobs.description {% endtrans %}
 
                 {% for job in jobs %}
                     <div class="list-group">

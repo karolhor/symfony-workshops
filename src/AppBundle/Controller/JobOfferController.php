@@ -18,17 +18,14 @@ class JobOfferController extends Controller
      *     defaults={"_locale":"en"}
      * )
      */
-    public function listAction($_locale)
+    public function listAction()
     {
 
         $jobs = $this->getDoctrine()->getRepository('AppBundle:Job')
             ->findAll();
 
-        $message = $this->get('translator')->trans("jobs.description");
-
         return $this->render('jobOffer/list.html.twig', [
-            'jobs' => $jobs,
-            'message' => $message
+            'jobs' => $jobs
         ]);
     }
 
