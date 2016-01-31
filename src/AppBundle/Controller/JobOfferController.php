@@ -20,7 +20,12 @@ class JobOfferController extends Controller
         $jobs = $this->getDoctrine()->getRepository('AppBundle:Job')
             ->findAll();
 
-        return $this->render('jobOffer/list.html.twig', ['jobs' => $jobs]);
+        $message = $this->get('translator')->trans("This is job offer board");
+
+        return $this->render('jobOffer/list.html.twig', [
+            'jobs' => $jobs,
+            'message' => $message
+        ]);
     }
 
     /**

@@ -32,7 +32,7 @@
             </nav>
 
             <div class="panel-body">
-
+                {{ message }}
                 {% for job in jobs %}
                     <div class="list-group">
                         <a href="{{ path("showJob", {'id': job.id}) }}" class="list-group-item">
