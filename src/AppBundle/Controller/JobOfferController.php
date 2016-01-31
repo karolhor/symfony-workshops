@@ -13,14 +13,18 @@ use Symfony\Component\HttpFoundation\Response;
 class JobOfferController extends Controller
 {
     /**
-     * @Route("/", name="listJobs")
+     * @Route(
+     *     "/{_locale}", name="listJobs",
+     *     defaults={"_locale":"en"}
+     * )
      */
-    public function listAction()
+    public function listAction($_locale)
     {
+
         $jobs = $this->getDoctrine()->getRepository('AppBundle:Job')
             ->findAll();
 
-        $message = $this->get('translator')->trans("This is job offer board");
+        $message = $this->get('translator')->trans("jobs.description");
 
         return $this->render('jobOffer/list.html.twig', [
             'jobs' => $jobs,
