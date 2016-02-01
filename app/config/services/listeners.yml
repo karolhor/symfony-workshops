@@ -3,3 +3,17 @@ services:
     class: AppBundle\EventListener\AccessDeniedRequestListener
     tags:
       - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
+
+  app.listener.notification:
+    class: AppBundle\EventListener\NotificationEventListener
+    arguments:
+      - "@logger"
+    tags:
+      - {name: kernel.event_listener, event: app.job_create, method: onJobCreate}
+
+  app.listener.cache_warm_up:
+      class: AppBundle\EventListener\CacheWarmUpEventListener
+      arguments:
+        - "@logger"
+      tags:
+        - {name: kernel.event_subscriber}

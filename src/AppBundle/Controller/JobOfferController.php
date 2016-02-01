@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Job;
+use AppBundle\Event\AppEvents;
+use AppBundle\Event\JobCreatedEvent;
 use AppBundle\Form\JobType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
@@ -51,6 +53,9 @@ class JobOfferController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($job);
             $em->flush();
+
+            $event = new JobCreatedEvent($job);
+            $this->get('event_dispatcher')->dispatch(AppEvents::JOB_CREATE, $event);
 
             return $this->redirectToRoute('showJob', ['id' => $job->getId()]);
         }
