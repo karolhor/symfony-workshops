@@ -1,0 +1,5 @@
+services:
+  app.listener.access_denied:
+    class: AppBundle\EventListener\AccessDeniedRequestListener
+    tags:
+      - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest}
