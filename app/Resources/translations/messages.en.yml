@@ -1,2 +1,3 @@
 jobs:
   description: This is job offer board
+  list_count: "{0} No jobs to show|{1} There is one job to show|]1,Inf[ There are %count% jobs to show"

@@ -1,2 +1,3 @@
 jobs:
   description: To jest tablica ogłoszeń o pracę
+  list_count: "{0} Brak ofert do wyświetlenia|{1} Jedna oferta do wyświetlenia|]1,Inf[ Obecnie jest ofert: %count%"
