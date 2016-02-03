@@ -1,0 +1,6 @@
+services:
+  app.voter.job:
+    class: AppBundle\Voter\JobVoter
+    tags:
+      - { name: security.voter }
+

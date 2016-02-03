@@ -87,6 +87,13 @@ class Job
      */
     private $author;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="published_at", type="datetime", nullable=true)
+     */
+    private $publishedAt;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -218,5 +225,29 @@ class Job
     public function isAuthor(User $user)
     {
         return $this->author && ($user->getId() == $this->author->getId());
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getPublishedAt()
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * @param \DateTime $publishedAt
+     */
+    public function setPublishedAt($publishedAt)
+    {
+        $this->publishedAt = $publishedAt;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPublished()
+    {
+        return null !== $this->publishedAt;
     }
 }

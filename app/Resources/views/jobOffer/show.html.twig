@@ -26,7 +26,7 @@
         {% endif %}
 
         <div class="row actions">
-            {% if is_granted('ROLE_USER') and job.isAuthor(app.user) %}
+            {% if is_granted('edit', job) %}
                 <a href="" class="btn btn-primary">Edit</a>
                 <a href="" class="btn btn-danger">Delete</a>
             {% endif %}

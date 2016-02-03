@@ -10,7 +10,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -78,6 +77,9 @@ class JobOfferController extends Controller
      *
      * @Route("/job/show/{id}", name="showJob")
      * @ParamConverter("job", class="AppBundle\Entity\Job")
+     *
+     *
+     * @Security("is_granted('view', job)")
      */
     public function showAction(Job $job)
     {
