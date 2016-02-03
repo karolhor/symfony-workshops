@@ -1,0 +1,5 @@
+services:
+    app.security.token_authenticator:
+        class: AppBundle\Security\TokenAuthenticator
+        arguments:
+          - '@repository.user'
