@@ -29,6 +29,10 @@
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                 <div class="nav navbar-nav navbar-right">
                     <p class="navbar-text">Hello, {{ app.user.username }}</p>
+
+                    {% if is_granted("ROLE_PREVIOUS_ADMIN") %}
+                        <p class="navbar-text">(<a href="{{ path('listJobs', {'_want_to_be_this_user':'_exit'}) }}">Exit impersonation</a>)</p>
+                    {% endif %}
                     <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger navbar-btn">Log out</a>
                 </div>
             {% else %}

@@ -28,6 +28,9 @@ security:
                 authenticators:
                     - app.security.token_authenticator
 
+            # default role is ROLE_ALLOWED_TO_SWITCH & parameter _switch_user
+            switch_user: { role: ROLE_ADMIN, parameter: _want_to_be_this_user }
+
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
