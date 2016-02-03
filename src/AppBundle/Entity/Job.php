@@ -80,6 +80,13 @@ class Job
      */
     private $tags;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="jobs")
+     */
+    private $author;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -190,5 +197,26 @@ class Job
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @return User
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param User $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    public function isAuthor(User $user)
+    {
+        return $this->author && ($user->getId() == $this->author->getId());
     }
 }

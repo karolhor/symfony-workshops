@@ -26,8 +26,10 @@
         {% endif %}
 
         <div class="row actions">
-            <a href="" class="btn btn-primary">Edit</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            {% if is_granted('ROLE_USER') and job.isAuthor(app.user) %}
+                <a href="" class="btn btn-primary">Edit</a>
+                <a href="" class="btn btn-danger">Delete</a>
+            {% endif %}
             <a href="{{ path("listJobs") }}" class="btn btn-link">Go back to list</a>
         </div>
 

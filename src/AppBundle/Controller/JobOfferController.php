@@ -8,6 +8,7 @@ use AppBundle\Event\JobCreatedEvent;
 use AppBundle\Form\JobType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +36,8 @@ class JobOfferController extends Controller
 
     /**
      * @Route("/job/new", name="newJob")
+     *
+     * @Security("has_role('ROLE_USER')")
      */
     public function newAction(Request $request)
     {
@@ -51,6 +54,8 @@ class JobOfferController extends Controller
                 $this->get('attachment.attachment_upload_manager')
                     ->upload($job->getAttachment());
             }
+
+            $job->setAuthor($this->getUser());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($job);

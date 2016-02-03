@@ -2,6 +2,7 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -24,11 +25,19 @@ class User extends BaseUser
      */
     private $apiKey;
 
+    /**
+     * @var Job[] | ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Job", mappedBy="author")
+     */
+    private $jobs;
+
     public function __construct()
     {
         parent::__construct();
 
         $this->apiKey = uniqid("", true);
+        $this->jobs = new ArrayCollection();
     }
 
     /**
