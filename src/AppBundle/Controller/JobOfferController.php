@@ -8,7 +8,6 @@ use AppBundle\Event\JobCreatedEvent;
 use AppBundle\Form\JobType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -95,14 +94,5 @@ class JobOfferController extends Controller
     public function testAction($year, $_locale, $title, $_format)
     {
         return $this->render('base.html.twig');
-    }
-
-    /**
-     * @Route("/login")
-     * @Template("login.html.twig")
-     */
-    public function loginAction()
-    {
-        return [];
     }
 }

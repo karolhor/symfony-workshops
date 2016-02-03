@@ -1,2 +1,6 @@
 imports:
   - { resource: services/ }
+
+services:
+  fos_user.doctrine_registry: # fos_user_bundle issue #2048 fix
+    alias: doctrine

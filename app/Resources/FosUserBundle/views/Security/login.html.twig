@@ -1,0 +1,3 @@
+{% extends app.request.attributes.get('partial')
+    ? '::login_partial.html.twig'
+    : '::full_login.html.twig' %}
