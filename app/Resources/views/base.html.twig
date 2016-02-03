@@ -25,15 +25,16 @@
             <a class="navbar-brand" href="{{ path("listJobs") }}">Job Offer Board</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            {{ render(controller("FOSUserBundle:Security:login", {"partial":true})) }}
 
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <div class="nav navbar-nav navbar-right">
+                    <p class="navbar-text">Hello, {{ app.user.username }}</p>
+                    <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger navbar-btn">Log out</a>
+                </div>
+            {% else %}
+                {{ render(controller("FOSUserBundle:Security:login", {"partial":true})) }}
+            {% endif %}
 
-            {#
-            <div class="nav navbar-nav navbar-right">
-                <p class="navbar-text">Hello, John</p>
-                <a href="#" class="btn btn-danger navbar-btn">Log out</a>
-            </div>
-            #}
         </div>
     </div>
 </nav>
