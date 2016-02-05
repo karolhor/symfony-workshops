@@ -35,6 +35,14 @@
                 {% trans %} jobs.description {% endtrans %}
 
                 <br/>
+
+                {{ listGeneration|date('H:i:s') }}
+
+                <br/>
+
+                {{ render_esi(controller('AppBundle:JobOffer:version')) }}
+
+                <br/>
                 {% set job_offers=5 %}
 
                 {% transchoice job_offers with {'%count%':job_offers} %}

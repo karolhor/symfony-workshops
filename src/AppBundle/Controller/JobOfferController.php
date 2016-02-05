@@ -24,18 +24,19 @@ class JobOfferController extends Controller
      * )
      *
      * @Cache(
-     *     maxage=60,
-     *
+     *     smaxage=60
      * )
      */
     public function listAction()
     {
-        sleep(5);
         $jobs = $this->getDoctrine()->getRepository('AppBundle:Job')
             ->findAll();
 
+        $listGeneration = new \DateTime();
+
         return $this->render('jobOffer/list.html.twig', [
-            'jobs' => $jobs
+            'jobs' => $jobs,
+            'listGeneration' => $listGeneration
         ]);
     }
 
@@ -89,9 +90,8 @@ class JobOfferController extends Controller
         $response = new Response();
         $response->setPublic();
 
-        if ($job->getPublishedAt()) {
-            $response->setLastModified($job->getPublishedAt());
-        }
+        $etag = md5($job->getDescription());
+        $response->setEtag($etag);
 
         if($response->isNotModified($request)) {
             return $response;
@@ -122,5 +122,16 @@ class JobOfferController extends Controller
     public function testAction($year, $_locale, $title, $_format)
     {
         return $this->render('base.html.twig');
+    }
+
+    public function versionAction()
+    {
+        $response = new Response();
+        $response->setSharedMaxAge(10);
+
+        $now = new \DateTime();
+        $response->setContent("version: ".$now->format(\DateTime::ISO8601));
+
+        return $response;
     }
 }
