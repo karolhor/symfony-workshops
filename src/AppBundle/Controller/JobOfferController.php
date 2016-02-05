@@ -6,6 +6,7 @@ use AppBundle\Entity\Job;
 use AppBundle\Event\AppEvents;
 use AppBundle\Event\JobCreatedEvent;
 use AppBundle\Form\JobType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -21,10 +22,14 @@ class JobOfferController extends Controller
      *     requirements={"_locale":"en|pl"},
      *     defaults={"_locale":"en"}
      * )
+     *
+     * @Cache(
+     *     expires="1 minute"
+     * )
      */
     public function listAction()
     {
-
+        sleep(5);
         $jobs = $this->getDoctrine()->getRepository('AppBundle:Job')
             ->findAll();
 
