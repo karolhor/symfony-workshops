@@ -1,0 +1,53 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+.new-job, .job-offer {
+    width: 970px;
+}
+
+h1 {
+    margin-bottom: 50px;
+}
+
+.job-list h1 {
+    margin-bottom: 20px;
+}
+
+.new-job-form-wrap {
+    background: #F7F6F6;
+    padding: 20px;
+}
+
+.new-job textarea {
+    resize: none;
+}
+
+.employer-label {
+    color: #337AB7;
+}
+
+.job-filters label {
+    padding-right: 3px;
+}
+
+#titleFilter {
+    width: 290px;
+}
+
+#employerFilter {
+    width: 255px;
+}
+
+.new-job-btn {
+    margin-bottom: 20px;
+}
+
+.job-offer .actions {
+    margin-top: 20px;
+}
+
+.attachment img {
+    padding-right:10px;
+}
