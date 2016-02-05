@@ -83,15 +83,29 @@ class JobOfferController extends Controller
      *
      * @Route("/job/show/{id}", name="showJob")
      * @ParamConverter("job", class="AppBundle\Entity\Job")
-     *
-     *
-     * @Security("is_granted('view', job)")
      */
-    public function showAction(Job $job)
+    public function showAction(Job $job, Request $request)
     {
-        return $this->render('jobOffer/show.html.twig', [
-            'job' => $job
-        ]);
+        $response = new Response();
+        $response->setPublic();
+
+        if ($job->getPublishedAt()) {
+            $response->setLastModified($job->getPublishedAt());
+        }
+
+        if($response->isNotModified($request)) {
+            return $response;
+        }
+        sleep(1);
+        $now = new \DateTime();
+        $job->setTitle($now->format(\DateTime::ISO8601). $job->getTitle());
+        return $this->render(
+            'jobOffer/show.html.twig',
+            [
+                'job' => $job
+            ],
+            $response
+        );
     }
 
     /**
