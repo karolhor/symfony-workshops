@@ -24,7 +24,8 @@ class JobOfferController extends Controller
      * )
      *
      * @Cache(
-     *     expires="1 minute"
+     *     maxage=60,
+     *
      * )
      */
     public function listAction()
