@@ -89,9 +89,8 @@ class JobOfferController extends Controller
         $response = new Response();
         $response->setPublic();
 
-        if ($job->getPublishedAt()) {
-            $response->setLastModified($job->getPublishedAt());
-        }
+        $etag = md5($job->getDescription());
+        $response->setEtag($etag);
 
         if($response->isNotModified($request)) {
             return $response;
